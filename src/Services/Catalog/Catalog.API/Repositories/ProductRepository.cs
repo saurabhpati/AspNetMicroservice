@@ -35,10 +35,10 @@ namespace Catalog.API.Repositories
             return _catalogContext.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByName(string name)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryName(string category)
         {
             var result = await _catalogContext.Products
-                .Find(Builders<Product>.Filter.Eq(p => p.Name, name))
+                .Find(Builders<Product>.Filter.Eq(p => p.Category, category))
                 .ToListAsync();
 
             return result;
